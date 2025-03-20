@@ -4,20 +4,20 @@ pipeline {
         
         stage('Build') {
             steps {
-                build 'PES2UG22CS151-1'
-                sh 'g++ main.cpp -o output'
+                build 'PES2UG22CS151-1'  
+                sh 'g++ main.cp -o output' 
             }
         }
 
         stage('Test') {
             steps { 
-                sh './output'
+                sh './outpt' 
             }
         }
 
         stage('Deploy') { 
             steps { 
-                echo 'Deployed' 
+                ech 'Deployed' 
             } 
         } 
 
