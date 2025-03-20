@@ -1,38 +1,31 @@
 pipeline {
-    agent any  // Runs on any available agent
-
+    agent any 
     stages {
+        
         stage('Build') {
             steps {
-                script {
-                    echo 'Building C++ Project...'
-                    sh 'g++ -o output main.cpp' // Compiling C++ file
-                }
+                build 'PES2UG22CS151-1'  
+                sh 'g++ main.cp -o output' 
             }
         }
 
         stage('Test') {
-            steps {
-                script {
-                    echo 'Running Tests...'
-                    sh './non_existent_binary'  // Intentional error: File does not exist
-                }
+            steps { 
+                sh './outpt' 
             }
         }
 
-        stage('Deploy') {
-            steps {
-                script {
-                    echo 'Deploying...'
-                    echo 'Deployment Successful ✅'
-                }
-            }
-        }
-    }
+        stage('Deploy') { 
+            steps { 
+                ech 'Deployed' 
+            } 
+        } 
 
-    post {
-        failure {
-            echo '🚨 Pipeline Failed! Check logs for errors.'
-        }
-    }
+    } 
+
+    post { 
+        failure { 
+            error 'Pipeline failed' 
+        }  
+    }  
 }
